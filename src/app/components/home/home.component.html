@@ -1,0 +1,24 @@
+<div>Home!! - {{date | date:'dd/MM/yyyy'}}</div>
+<div><input type="text" [(ngModel)]="saveData"><button (click)="add()">Add</button></div>
+<br><br><hr><br><br>
+<div *ngIf="administrador; then admin else noAdmin">
+</div>
+
+<ng-template #admin>
+  <button (click)="cambiar(false)">Cambiar</button>
+  <strong>Eres administrador</strong>
+</ng-template>
+
+<ng-template #noAdmin>
+  <button (click)="cambiar(true)">Cambiar</button>
+  <strong>No eres administrador</strong>
+</ng-template>
+
+<br><br><hr><br><br>
+<h3>Listado</h3>
+<ul *ngIf="articulos">
+  <li *ngFor="let articulo of articulos">
+    {{articulo.id}} - {{articulo.title}}
+  </li>
+</ul>
+<span *ngIf="!articulos">Cargando...</span>
